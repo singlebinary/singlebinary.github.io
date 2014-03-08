@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--The link below on viewport is to allow the website to look the same on any screen-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohit Deshpande</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- This creates the title on the left top of the page including the header bar-->
+    <div class = "navbar navbar-inverse navbar-static-top">
+        <div class = "container">
+          <!--a href="#" class = "navbar-brand">Rohit Deshpande</a-->
+            <!-- Here the line below makes a collapsable menu for smaller screens-->
+            <!-- Each button line corresponds to the number of lines-->
+          <button class= "navbar-toggle" data-toggle = "collapse" data-target=".navHeaderCollapse">
+              <span class = "icon-bar"></span>
+              <span class = "icon-bar"></span>
+              <span class = "icon-bar"></span>
+
+          </button>
+            <!-- Here the line below makes a collapsable menu for smaller screens-->
+          <div class = "collapse navbar-collapse navHeaderCollapse">
+              <!--We now make the navigation bars with various buttons for pages -->
+              <ul class = "nav navbar-nav nav navbar-right">
+                <!-- The active makes the home buttome active-->
+                  <li> <a href="../index.html">Home</a></li>
+                  <li class="active"> <a href="../blog.html">Blog</a></li>
+                  <li> <a href="#">About</a></li>
+                  <!-- Making a dropdown menu for Social Media-->
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Social Media <b class = "caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="#">Twitter</a></li>
+                          <li><a href="#">Instagram</a></li>
+                      </ul>
+                  </li>
+                  <li> <a href="#">Contact</a></li>
+
+              </ul>
+
+          </div>  
+
+        </div>   
+    </div>
+    <!-- BEGIN Content of the blog page-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="panel panel-default">
+
+            <div class="panel-body">              
+               <div class="page-header">
+                 <h4>Installation Guide to IPython Notebook</h4>
+               </div> 
+                 <p>The installation of ipython notebook on a mac may seem a little more tricky than on Windows or Linux. In the other OS, it is either double-click or use apt-get install. However, for the mac, a sequence of stepsYou can also install iPython Notebook with macports. </p>
+
+                 <p>I assume that you have the latest version of Python installed.. Here are the steps to follow: First install pyzmq. For all of the installations you will need root access. So, install the first package with pip in the following way: </p>
+                <BLOCKQUOTE>
+                  <font face="monaco" size="3">sudo pip install pyzmq</font>
+                </BLOCKQUOTE>
+                Next install Tornado. In my installation of python, this was already installed. Nonetheless, this steps ensures that you have a version installed. Tornado is required to support current version of browsers.
+                <BLOCKQUOTE>
+                  <font face="monaco" size="3">pip install tornado</font> 
+                </BLOCKQUOTE>
+                Next install jinja2. Ninja is a template tool for rendering HTML pages.
+                <BLOCKQUOTE>
+                  <font face="monaco" size="3">pip install jinja2</font>
+                </BLOCKQUOTE>
+                That’s it. Once this is done, you can test the iPython notebook installation with the following command in a terminal:
+                <BLOCKQUOTE>
+                  <font face="monaco" size="3">ipython notebook</font> 
+                </BLOCKQUOTE>
+                This will open a new window or a tab in your browser. In my next post, I will add things you can do in a iPython notebook..
+
+            </div>
+             <!-- END Content of the blog page-->
+
+          </div>
+        </div> 
+      </div>
+    </div>
+
+    <!--Creating a bottom bar -->
+    <div class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <p class="navbar-text pull-left"><small>Site Built with Bootstrap3</small></p>
+        </div>
+    </div>
+
+
+<!-- javascript -->
+     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--The link below on viewport is to allow the website to look the same on any screen-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohit Deshpande</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- This creates the title on the left top of the page including the header bar-->
+    <div class = "navbar navbar-inverse navbar-static-top">
+        <div class = "container">
+          <!--a href="#" class = "navbar-brand">Rohit Deshpande</a-->
+            <!-- Here the line below makes a collapsable menu for smaller screens-->
+            <!-- Each button line corresponds to the number of lines-->
+          <button class= "navbar-toggle" data-toggle = "collapse" data-target=".navHeaderCollapse">
+              <span class = "icon-bar"></span>
+              <span class = "icon-bar"></span>
+              <span class = "icon-bar"></span>
+
+          </button>
+            <!-- Here the line below makes a collapsable menu for smaller screens-->
+          <div class = "collapse navbar-collapse navHeaderCollapse">
+              <!--We now make the navigation bars with various buttons for pages -->
+              <ul class = "nav navbar-nav nav navbar-right">
+                <!-- The active makes the home buttome active-->
+                  <li> <a href="index.html">Home</a></li>
+                  <li class="active"> <a href="blog.html">Blog</a></li>
+                  <li> <a href="#">About</a></li>
+                  <!-- Making a dropdown menu for Social Media-->
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Social Media <b class = "caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="#">Twitter</a></li>
+                          <li><a href="#">Instagram</a></li>
+                      </ul>
+                  </li>
+                  <li> <a href="#">Contact</a></li>
+
+              </ul>
+
+          </div>  
+
+        </div>   
+    </div>
+    <!-- BEGIN Content of the blog page-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="panel panel-default">
+
+            <div class="panel-body">              
+               <div class="page-header">
+                 <h4>Installation Guide to IPython Notebook <small> posted on Jan. 28, 2014</small></h4>
+               </div> 
+                 <p>The installation of ipython notebook on a mac may seem a little more tricky than on Windows or Linux. In the other OS, it is either double-click or use apt-get install. However, for the mac, a sequence of steps... <a href="blog/ipython_installation.html">Read More...</a>. 
+                 </p>
+            </div>
+
+           <div class="panel-body">              
+               <div class="page-header">
+                 <h4>Changing Colors in TexShop <small> posted on Apr. 29, 2013</small></h4>
+               </div> 
+                 <p>I do not like the default color schemes of TeXShop in Mac. So, I decided to tinker the color schemes in order to find something that works really well for me. Now, it is not very easy to change the colors... <a href="blog/change_colors_in_texshop.html">Read More...</a>. 
+                 </p>
+            </div>
+             <!-- END Content of the blog page-->
+
+          </div>
+        </div> 
+      </div>
+    </div>
+
+    <!--Creating a bottom bar -->
+    <div class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <p class="navbar-text pull-left"><small>Site Built with Bootstrap3</small></p>
+        </div>
+    </div>
+
+
+<!-- javascript -->
+     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>
