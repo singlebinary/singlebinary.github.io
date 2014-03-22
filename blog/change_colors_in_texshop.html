@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--The link below on viewport is to allow the website to look the same on any screen-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohit Deshpande</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- This creates the title on the left top of the page including the header bar-->
+    <div class = "navbar navbar-inverse navbar-static-top">
+        <div class = "container">
+          <!--a href="#" class = "navbar-brand">Rohit Deshpande</a-->
+            <!-- Here the line below makes a collapsable menu for smaller screens-->
+            <!-- Each button line corresponds to the number of lines-->
+          <button class= "navbar-toggle" data-toggle = "collapse" data-target=".navHeaderCollapse">
+              <span class = "icon-bar"></span>
+              <span class = "icon-bar"></span>
+              <span class = "icon-bar"></span>
+
+          </button>
+            <!-- Here the line below makes a collapsable menu for smaller screens-->
+          <div class = "collapse navbar-collapse navHeaderCollapse">
+              <!--We now make the navigation bars with various buttons for pages -->
+              <ul class = "nav navbar-nav nav navbar-right">
+                <!-- The active makes the home buttome active-->
+                  <li> <a href="../index.html">Home</a></li>
+                  <li class="active"> <a href="../blog.html">Blog</a></li>
+                  <li> <a href="#">About</a></li>
+                  <!-- Making a dropdown menu for Social Media-->
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Social Media <b class = "caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="#">Twitter</a></li>
+                          <li><a href="#">Instagram</a></li>
+                      </ul>
+                  </li>
+                  <li> <a href="#">Contact</a></li>
+
+              </ul>
+
+          </div>  
+
+        </div>   
+    </div>
+    <!-- BEGIN Content of the blog page-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="panel panel-default">
+
+            <div class="panel-body">              
+               <div class="page-header">
+                 <h4>Changing Colors in TexShop</h4>
+               </div> 
+                 <p>I do not like the default color schemes of TeXShop in Mac. So, I decided to tinker the color schemes in order to find something that works really well for me. Now, it is not very easy to change the colors. Yes, one can change the background but what about the text colors, or the comments colors? I do not like the hideous red color for comments. It seems strange that one can easy change the background color but not the text color. I found this solution online so I thought of sharing it with you.</p>
+
+                 <p>To change the color schemes, one needs to know the commands. This is buried deep in TeXShop. However, it can be found by clicking on "Help" in the global menu and typing "Hidden Preference Items", without quotes. This brings a list of preferences one can apply.</p>
+
+                 <p>Choose the "TeX Command Line Preferences" link on the left of the window. This brings in all the command line preferences in text. Simply copy the commands, change the RGB colors and you have it. As an example, here's what I have right now: </p>
+
+                 <p>Here the commands are in purple, the comments in gray, while the background is black. I achieved this by first finding the RGB colors that vary between 0 and 1. You can find various colors in RGB values here. </p>
+
+                 <p>RGB values between 0 and 1 </p>
+
+                 <p>Next, I used the following commands in the terminal: </p>
+
+                <BLOCKQUOTE>
+                  <font face="monaco" size="3">
+                    <p>defaults write TeXShop foreground_R 0.745098</p>
+                    <p>defaults write TeXShop foreground_G 0.745098</p>
+                    <p>defaults write TeXShop foreground_B 0.745098a<p>
+                  </font>
+                </BLOCKQUOTE>
+                change the command color (light purple)
+                <BLOCKQUOTE>
+                  <font face="monaco" size="3">
+                     <p>defaults write TeXShop commandred 0.729412</p>
+                     <p>defaults write TeXShop commandgreen 0.333333</p>
+                     <p>defaults write TeXShop commandblue 0.827451</p>
+                  </font> 
+                </BLOCKQUOTE>
+                change the comment color  (light gray)
+                <BLOCKQUOTE>
+                  <font face="monaco" size="3">
+                     <p>defaults write TeXShop commentred 0.466667</p>
+                     <p>defaults write TeXShop commentgreen 0.533333</p>
+                     <p>defaults write TeXShop commentblue 0.6</p>
+                  </font>
+                </BLOCKQUOTE>
+
+            </div>
+             <!-- END Content of the blog page-->
+
+          </div>
+        </div> 
+      </div>
+    </div>
+
+    <!--Creating a bottom bar -->
+    <div class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <p class="navbar-text pull-left"><small>Site Built with Bootstrap3</small></p>
+        </div>
+    </div>
+
+
+<!-- javascript -->
+     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+</body>
+</html>
