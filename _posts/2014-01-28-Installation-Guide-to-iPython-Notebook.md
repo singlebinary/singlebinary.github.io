@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Installation Guide to iPython Notebook
+comments: True
 ---
 
 The installation of ipython notebook on a mac may seem a little more tricky than on Windows or Linux. In the other OS, it is either double-click or use apt-get install. However, for the mac, a sequence of steps need to be followed. Here I highlight the steps that will help guide you install ipython notebook on a mac. 
