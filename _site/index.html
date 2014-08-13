@@ -84,10 +84,6 @@
           
         
       
-        
-          
-        
-      
 
       <a class="sidebar-nav-item" href="https://github.com/rohitx">GitHub project</a>
     </nav>
@@ -121,25 +117,43 @@
 
     <span class="post-date">28 Jan 2014</span>
 
-    <p>The installation of ipython notebook on a mac may seem a little more tricky than on Windows or Linux. In the other OS, it is either double-click or use apt-get install. However, for the mac, a sequence of steps need to be followed. Here I highlight the steps that will help guide you install ipython notebook on a mac. </p>
+    The installation of ipython notebook on a mac may seem a little more tricky than on Windows or Linux. In the other OS, it is either double-click or use apt-get install. However, for the mac, a sequence of steps need to be followed. Here I highlight the steps that will...
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2014/01/05/texshop-color/">
+        Changing the Default TexShop Colors
+      </a>
+    </h1>
 
-<p>You can also install iPython Notebook with macports</p>
+    <span class="post-date">05 Jan 2014</span>
 
-<p>I assume that you have the latest version of Python installed.. Here are the steps to follow:
-First install pyzmq. For all of the installations you will need root access. So, install the first package with pip in the following way: </p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">                     sudo pip install pyzmq
-</code></pre></div>
-<p>Next install Tornado. In my installation of python, this was already installed. Nonetheless, this steps ensures that you have a version installed. Tornado is required to support current version of browsers. </p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">                     pip install tornado 
-</code></pre></div>
-<p>Next install jinja2. Ninja is a template tool for rendering HTML pages. </p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">                      pip install jinja2
-</code></pre></div>
-<p>That’s it. Once this is done, you can test the iPython notebook installation with the following command in a terminal: </p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">                     ipython notebook 
-</code></pre></div>
-<p>This will open a new window or a tab in your browser. In my next post, I will add things you can do in a iPython notebook.. </p>
+    I do not like the default color schemes of TeXShop in Mac. So, I decided to tinker the color schemes in order to find something that works really well for me. Now, it is not very easy to change the colors. Yes, one can change the background but what about...
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2014/01/04/OOP-plotting/">
+        Plotting in Python
+      </a>
+    </h1>
 
+    <span class="post-date">04 Jan 2014</span>
+
+    Most of the Python plotting tutorials involve the use of non-object oriented way to create plot. However, I think every individual should learn to plot using the Object oriented methods in Python. This are not difficult or complicated. As with every OOP, the plotting script becomes reusable. I will give...
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2014/01/03/method-chain/">
+        Methods chain in Python
+      </a>
+    </h1>
+
+    <span class="post-date">03 Jan 2014</span>
+
+    I came across the methods chain while working on D3. In a method chain one can combine two or more operations. The same thing can be done in Python. Here&#39;s an example: name = &#39;rohit-deshpande&#39; name.upper().split(&#39;-&#39;) Note that Python goes from left to right. So, first the command will make...
   </div>
   
   <div class="post">
@@ -151,35 +165,26 @@ First install pyzmq. For all of the installations you will need root access. So,
 
     <span class="post-date">02 Jan 2014</span>
 
-    <p>It is fairly easy to create a DataFrame in Pandas. To create a DataFrame in Pandas, we need to do the following: </p>
+    It is fairly easy to create a DataFrame in Pandas. To create a DataFrame in Pandas, we need to do the following: Create a list of column headers Create an index associated to the number of rows Define the dataframe with its parameters Suppose the dataframe has 100 lines, we...
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2013/05/18/IDL-sav_files/">
+        How to read IDL .sav files in Python
+      </a>
+    </h1>
 
-<ol>
-<li>Create a list of column headers</li>
-<li>The index associated to the number of rows </li>
-<li>Define the dataframe with its parameters</li>
-</ol>
+    <span class="post-date">18 May 2013</span>
 
-<p>Suppose the dataframe has 100 lines, we would do the following: </p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="n">user_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;name1&quot;</span><span class="p">,</span> <span class="s">&quot;name2&quot;</span><span class="p">,</span> <span class="s">&quot;name3&quot;</span><span class="p">]</span>
-<span class="n">index_user</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">101</span><span class="p">)]</span>
-<span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index_user</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">user_columns</span><span class="p">)</span>
-</code></pre></div>
-<p>Now suppose we had another dataframe (i.e. df_old) and we wanted to populate our new dataframe with some of the columns from the old dataframe. Here&#39;s how to do that: </p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">df_new</span><span class="p">[</span><span class="s">&quot;name1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_old</span><span class="p">[</span><span class="s">&quot;restaurant_names&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">df_new</span><span class="p">[</span><span class="s">&quot;name2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_old</span><span class="p">[</span><span class="s">&quot;Address&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-</code></pre></div>
-<p>Of course this will work provided the number of rows in each of the dataframes match. </p>
-
-<p>There we have it. We&#39;ve created a new dataframe and populated it with values. </p>
-
+    With my on-going effort to transition from IDL to Python, I present a post on reading IDL .sav files in Python. Make sure you have the latest version of Numpy and Scipy installed. Visit this page: IDL save file package and download the latest version of IDLSave file Open terminal...
   </div>
   
 </div>
 
 <div class="pagination">
   
-    <a class="pagination-item older" href="/page2">Older</a>
+    <span class="pagination-item older">Older</span>
   
   
     <span class="pagination-item newer">Newer</span>

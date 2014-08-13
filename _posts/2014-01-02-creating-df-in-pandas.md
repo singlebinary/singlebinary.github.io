@@ -5,7 +5,7 @@ title: Creating DataFrames in Pandas
 It is fairly easy to create a DataFrame in Pandas. To create a DataFrame in Pandas, we need to do the following: 
 
 1. Create a list of column headers
-2. The index associated to the number of rows 
+2. Create an index associated to the number of rows 
 3. Define the dataframe with its parameters
 
 Suppose the dataframe has 100 lines, we would do the following: 
