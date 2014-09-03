@@ -5,7 +5,7 @@ tags: python
 ---
 I learnt a quick way of deep searching. It may seem a noob thing, but it is very helpful and works like a charm. 
 
-I was looking for files that end with .tbl within multiple directories. I did the following: 
+I was looking for files that end with .tbl within multiple directories. I did the following (see below). Each '/' corresponds to a stage I am going into:  
 
 ~~~python
 ls */*/*/*.tbl
@@ -14,4 +14,4 @@ ls */*/*/*.tbl
 more -n3 */*/*/*.tbl
 ~~~
 
-The -n3 tells more how many lines to show. Here's the manual on more comamnd: http://linux.about.com/library/cmd/blcmdl1_more.htm
+The -n3 tells more how many lines to show. Here's the manual on more command: http://linux.about.com/library/cmd/blcmdl1_more.htm

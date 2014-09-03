@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Numpy Notes&#58; Part 1 &middot; Rohit at 1 A.U.
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+<h3 class="masthead-title">
+<a href="/" title="Home">Rohit at 1 A.U.</a>
+
+
+  &nbsp;&nbsp;&nbsp;
+  <small><a href=""></a></small>
+
+  &nbsp;&nbsp;&nbsp;
+  <small><a href=""></a></small>
+
+</h3> 
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Rohit at 1 A.U.
+        </a>
+      </h1>
+      <p class="lead">My experiences with Python, D3, and Data Analysis</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/archive/">Archive</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+
+      <a class="sidebar-nav-item" href="https://github.com/rohitx">GitHub project</a>
+    </nav>
+
+  </div>
+</div>
+
+
+    <!-- Add Disqus comments. -->
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41029669-4', 'auto');
+  ga('send', 'pageview');
+
+</script>   
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Numpy Notes&#58; Part 1</h1>
+  <span class="post-date">15 Aug 2014</span>
+  <p>The notes listed here are from the book &quot;Numpy Beginner&#39;s Guide, 2nd Edition by Ivan Idris&quot;. I would recommend this book for anyone wanting to learn Numpy for Data Analysis. </p>
+
+<p>Numpy has a multi-dimensional array object called ndarray. It consists of two parts: (1) the actual data; (2) some metadata describing the data. The majority of array operations leave the raw data untouched. The only aspect that changes is the metadata. The numpy array is in general homogeneous. </p>
+
+<h2>Array Creation and Manipulation:</h2>
+
+<ul>
+<li><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">.</span><span class="n">dtype</span></code></pre></div>
+
+<p>this attribute gives the dtype of the array.</p></li>
+<li><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">.</span><span class="n">shape</span></code></pre></div>
+
+<p>this attribute gives the shape of the array. It returns a tuple. </p></li>
+<li><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">arange</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></code></pre></div>
+
+<p>creates a 1d numpy array. We can create a multi-dimensional array by putting the arange() function in a list. For example: </p></li>
+</ul>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">a</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)])</span></code></pre></div>
+
+<p>will generate a 2 x 3 matrix. </p>
+
+<ul>
+<li><p>The selection of elements in a given array is just like the slicing in Python. </p></li>
+<li><p>The conversion datatype function in Numpy is similar to Python. </p></li>
+<li><p>Another way to convert a dtype of an array is to use the character code such as: 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;f&#39;</span><span class="p">)</span></code></pre></div>
+This will generate a float array of 7 elements. </p></li>
+<li><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">.</span><span class="n">reshape</span><span class="p">()</span></code></pre></div>
+
+<p>attribute allows to create a numpy array of a certain dimension. </p></li>
+<li><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">ravel</span><span class="p">()</span></code></pre></div>
+
+<p>flattens a matrix to 1D </p></li>
+<li><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">flatten</span><span class="p">()</span></code></pre></div>
+
+<p>does the same as ravel() but always allocates new memory while the ravel() does not. </p></li>
+<li><p>The shape of the array can also be changed with a tuple. For example: </p></li>
+</ul>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">b</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span></code></pre></div>
+
+<p>Note that a numpy array is mutable. </p>
+
+<ul>
+<li><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">.</span><span class="n">transpose</span><span class="p">()</span></code></pre></div>
+
+<p>allows to tranpose a matrix </p></li>
+<li><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">.</span><span class="n">resize</span><span class="p">()</span></code></pre></div>
+
+<p>allows to change the dimensions of the matrix</p></li>
+</ul>
+
+<h2>Stacking</h2>
+
+<ul>
+<li><p>The horizontal stack, 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">hstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span></code></pre></div>
+allows to stack the matrices a and b side-by-side. This is achieved similarly with the 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">concatenate</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span></code></pre></div></p></li>
+<li><p>The vertical stack, 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">vstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span></code></pre></div>
+allows to stack the matrices a and b one over the other. This is achieved similarly with the 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">concatenate</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span></code></pre></div></p></li>
+<li><p>Depth stack, 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span></code></pre></div>
+stacks the matrices a and b depth-wise. This means stacking of list of arrays along the third axis. </p></li>
+<li><p>Column stack, 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">column_stack</span><span class="p">()</span></code></pre></div>
+is identical to horizontal stack </p></li>
+<li><p>Row stack, 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">row_stack</span><span class="p">()</span></code></pre></div>
+is identical to vertical stack </p></li>
+</ul>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2014/08/13/ML-similarity-measurement/">
+            Machine Learning&#58; Similarity Measurement
+            <small>13 Aug 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/01/28/Installation-Guide-to-iPython-Notebook/">
+            Installation Guide to iPython Notebook
+            <small>28 Jan 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/01/06/unique-list-value/">
+            Find Unique Values in a list
+            <small>06 Jan 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>

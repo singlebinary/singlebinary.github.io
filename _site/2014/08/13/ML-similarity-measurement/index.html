@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Machine Learning&#58; Similarity Measurement &middot; Rohit at 1 A.U.
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+<h3 class="masthead-title">
+<a href="/" title="Home">Rohit at 1 A.U.</a>
+
+
+  &nbsp;&nbsp;&nbsp;
+  <small><a href=""></a></small>
+
+  &nbsp;&nbsp;&nbsp;
+  <small><a href=""></a></small>
+
+</h3> 
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Rohit at 1 A.U.
+        </a>
+      </h1>
+      <p class="lead">My experiences with Python, D3, and Data Analysis</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/archive/">Archive</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+
+      <a class="sidebar-nav-item" href="https://github.com/rohitx">GitHub project</a>
+    </nav>
+
+  </div>
+</div>
+
+
+    <!-- Add Disqus comments. -->
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41029669-4', 'auto');
+  ga('send', 'pageview');
+
+</script>   
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Machine Learning&#58; Similarity Measurement</h1>
+  <span class="post-date">13 Aug 2014</span>
+  <p>There are a various similarity metrics in Machine Learning. The similarity mectrics measure how similar two or more things are to each other. In general the &quot;distance&quot; is associated with how dissimilar two or more things are. Similarly, &quot;coefficient&quot; is associated to the degree of similarity. Here I present four metrics: </p>
+
+<ul>
+<li><p>Euclidean Distance </p></li>
+<li><p>Pearson Correlation </p></li>
+</ul>
+
+<p>Let&#39;s look at each one of them briefly with Python code examples. This blog post has been created with the help of &quot;Programming Collective Intelligence&quot; and Wikipedia for definitions. </p>
+
+<h2>Euclidean Distance</h2>
+
+<p>The Euclidean distance between two points is length of the line segments connecting those two points. In general, the Euclidean distance is defined as: </p>
+
+<p><img src="/assets/eulidean_dist.jpg" alt="My helpful screenshot"></p>
+
+<p>Let&#39;s look at an example. We have 6 movie critics and we wish to find similarity between their scores for given movies. We have the following dict of critics and their movie review scores:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">movie_critics</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;Amy Nicholson&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;Guardians of the Galaxy&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s">&#39;Lucy&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s">&#39;Dawn of The Planet of the Apes&#39;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">},</span><span class="s">&#39;Elizabeth Weitzman&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;Into The Storm&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s">&#39;Guardians of the Galaxy&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span><span class="s">&#39;Hercules&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">},</span><span class="s">&#39;Claudia Puig&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;Into The Storm&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s">&#39;Guardians of the Galaxy&#39;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span><span class="s">&#39;Lucy&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span> <span class="s">&#39;Dawn of The Planet of the Apes&#39;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">},</span><span class="s">&#39;Moira MacDonald&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;Into The Storm&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s">&#39;Lucy&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">},</span><span class="s">&#39;Rohit Deshpande&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;Guardians of the Galaxy&#39;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="s">&#39;Lucy&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span><span class="s">&#39;Hercules&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s">&#39;Dawn of The Planet of the Apes&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">},</span><span class="s">&#39;Rocket Raccon&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s">&#39;Oblivion&#39;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span> <span class="s">&#39;Edge of Tomorrow&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">}</span> <span class="p">}</span>
+</code></pre></div>
+<p>The python program to compute the Euclidean distance is as follows: </p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="c"># Take critics1 and critics2</span>
+<span class="k">def</span> <span class="nf">compare_critics</span><span class="p">(</span><span class="n">crit_list</span><span class="p">,</span> <span class="n">crit1</span><span class="p">,</span> <span class="n">crit2</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c"># Find if they have something in common</span>
+    <span class="k">for</span> <span class="n">movie</span> <span class="ow">in</span> <span class="n">movie_critics</span><span class="p">[</span><span class="n">crit1</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">movie</span> <span class="ow">in</span> <span class="n">movie_critics</span><span class="p">[</span><span class="n">crit2</span><span class="p">]:</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c">#print count</span>
+    <span class="c"># else just return 0 </span>
+    <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
+    <span class="c"># If they have in common compute Euclidean distance</span>
+    <span class="n">total_score</span> <span class="o">=</span> 
+         <span class="nb">sum</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">movie_critics</span><span class="p">[</span><span class="n">crit1</span><span class="p">][</span><span class="n">movie</span><span class="p">]</span> <span class="o">-</span> <span class="n">movie_critics</span><span class="p">[</span><span class="n">crit2</span><span class="p">][</span><span class="n">movie</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+           <span class="k">for</span> <span class="n">movie</span> <span class="ow">in</span> <span class="n">movie_critics</span><span class="p">[</span><span class="n">crit1</span><span class="p">]</span> <span class="k">if</span> <span class="n">movie</span> <span class="ow">in</span> <span class="n">movie_critics</span><span class="p">[</span><span class="n">crit2</span><span class="p">])</span>
+    <span class="n">final_score</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">total_score</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">final_score</span>
+</code></pre></div>
+<p>We add the 1. after to take the square root because this ensure that when we take one over the final value, we do not get division by zero. Note, that this formula is slightly different from the definition of Euclidean distance because here we normalize the score. That is, the distance is between 0 and 1, with the latter being the most similar. For example, </p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Gives a score of 1 as there is just one movie between them </span>
+<span class="c"># that has the same score </span>
+<span class="k">print</span> <span class="n">compare_critics</span><span class="p">(</span><span class="n">movie_critics</span><span class="p">,</span> <span class="s">&#39;Amy Nicholson&#39;</span><span class="p">,</span> <span class="s">&#39;Moira MacDonald&#39;</span><span class="p">)</span>
+<span class="c"># No common movies so this returns 0</span>
+<span class="k">print</span> <span class="n">compare_critics</span><span class="p">(</span><span class="n">movie_critics</span><span class="p">,</span> <span class="s">&#39;Amy Nicholson&#39;</span><span class="p">,</span> <span class="s">&#39;Rocket Raccon&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h2>Pearson Correlation</h2>
+
+<p>The Pearson Correlation, often called Pearson Product-Moment Correlation coefficient is the measure of association between two variables. This is performed by fitting a line to the data. The Pearson Correlation coefficient, denoted by r, can range between +1 and -1 (inclusive). </p>
+
+<p>The positive r value indicates, positive association. This means that the data is close to the line. It also means that the two variables are proportional, i.e., if one increases, the other does too. The negative r value suggests a negative association. Here, one variable is inversely proportional to the other. The r value of 0 indicates no association. Stronger the association between two variables, the closer the r value is to either +1 or -1. Weaker the association, closer is the r value to 0. </p>
+
+<p>Here are some important points and assumptions of Pearson Correlation: </p>
+
+<ul>
+<li><p>The variables should either be an interval or ratio data. </p></li>
+<li><p>The two variables can have different units. </p></li>
+<li><p>The test assumes the two variables are of equal types. That is, even if one is a dependent variable, it will treat the two variables on equal footing. </p></li>
+<li><p>The test assumes a linear relation between the two variables. It also assumes there are no outliers. The outliers in the data can drastically change the r value.</p></li>
+</ul>
+
+<p>So, how do we compute Pearson Coefficient? We do so by following these steps: </p>
+
+<p>For every pair (x, y), find: </p>
+
+<ul>
+<li><p>the number of elements, n</p></li>
+<li><p>sum all the values for x and then for y. This gives us sumx and sumy</p></li>
+<li><p>sum the squares for x and then for y. This gives us Sqsumx and Sqsumy</p></li>
+<li><p>sum the products of x and y. This gives us psum. </p></li>
+</ul>
+
+<p>Here&#39;s an example of the use of Pearson coefficients (taken from Programming Collective Intelligence):</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">critics</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;Lisa Rose&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;Lady in the Water&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s">&#39;Snakes on a Plane&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span><span class="s">&#39;Just My Luck&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s">&#39;Superman Returns&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span> <span class="s">&#39;You, Me and Dupree&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span><span class="s">&#39;The Night Listener&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">},</span><span class="s">&#39;Gene Seymour&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;Lady in the Water&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s">&#39;Snakes on a Plane&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span><span class="s">&#39;Just My Luck&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s">&#39;Superman Returns&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s">&#39;The Night Listener&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span><span class="s">&#39;You, Me and Dupree&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">},</span><span class="s">&#39;Michael Phillips&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;Lady in the Water&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s">&#39;Snakes on a Plane&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span><span class="s">&#39;Superman Returns&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span> <span class="s">&#39;The Night Listener&#39;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">},</span><span class="s">&#39;Claudia Puig&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;Snakes on a Plane&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span> <span class="s">&#39;Just My Luck&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span><span class="s">&#39;The Night Listener&#39;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span> <span class="s">&#39;Superman Returns&#39;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span><span class="s">&#39;You, Me and Dupree&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">},</span><span class="s">&#39;Mick LaSalle&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;Lady in the Water&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s">&#39;Snakes on a Plane&#39;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span><span class="s">&#39;Just My Luck&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s">&#39;Superman Returns&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s">&#39;The Night Listener&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span><span class="s">&#39;You, Me and Dupree&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">},</span><span class="s">&#39;Jack Matthews&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;Lady in the Water&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s">&#39;Snakes on a Plane&#39;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span><span class="s">&#39;The Night Listener&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s">&#39;Superman Returns&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s">&#39;You, Me and Dupree&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">},</span><span class="s">&#39;Toby&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;Snakes on a Plane&#39;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span> <span class="s">&#39;You, Me and Dupree&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s">&#39;Superman Returns&#39;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">},</span><span class="s">&#39;Rohit Deshpande&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;Lady in the Water&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span> <span class="s">&#39;Snakes on a Plane&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s">&#39;Just My Luck&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s">&#39;Superman Returns&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span> <span class="s">&#39;You, Me and Dupree&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span><span class="s">&#39;The Night Listener&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="p">}}</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">pearson_coeff</span><span class="p">(</span><span class="n">critics</span><span class="p">,</span> <span class="n">person1</span><span class="p">,</span> <span class="n">person2</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c"># Find if they have something in common</span>
+    <span class="k">for</span> <span class="n">movie</span> <span class="ow">in</span> <span class="n">critics</span><span class="p">[</span><span class="n">person1</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">movie</span> <span class="ow">in</span> <span class="n">critics</span><span class="p">[</span><span class="n">person2</span><span class="p">]:</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c">#print count</span>
+    <span class="c"># else just return 0 </span>
+    <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="n">list_person1</span> <span class="o">=</span><span class="p">[</span><span class="n">critics</span><span class="p">[</span><span class="n">person1</span><span class="p">][</span><span class="n">item</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">critics</span><span class="p">[</span><span class="n">person1</span><span class="p">]</span> <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">critics</span><span class="p">[</span><span class="n">person2</span><span class="p">]]</span>
+    <span class="n">list_person2</span> <span class="o">=</span><span class="p">[</span><span class="n">critics</span><span class="p">[</span><span class="n">person2</span><span class="p">][</span><span class="n">item</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">critics</span><span class="p">[</span><span class="n">person1</span><span class="p">]</span> <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">critics</span><span class="p">[</span><span class="n">person2</span><span class="p">]]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_person1</span><span class="p">)</span>
+    <span class="c"># Sum up the scores: </span>
+    <span class="n">sum1</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">score</span> <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">list_person1</span><span class="p">])</span>
+    <span class="n">sum2</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">score</span> <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">list_person2</span><span class="p">])</span>
+
+    <span class="c"># Sum up the squares: </span>
+    <span class="n">sum1Sq</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">pow</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">list_person1</span><span class="p">])</span>
+    <span class="n">sum2Sq</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">pow</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">list_person2</span><span class="p">])</span>
+
+    <span class="c"># Sum up the products</span>
+    <span class="n">pSum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">list_person1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">list_person2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span>
+
+    <span class="c"># Calculate Pearson Score </span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">pSum</span> <span class="o">-</span> <span class="p">(</span><span class="n">sum1</span><span class="o">*</span><span class="n">sum2</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">sum1Sq</span><span class="o">-</span><span class="nb">pow</span><span class="p">(</span><span class="n">sum1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">sum2Sq</span><span class="o">-</span><span class="nb">pow</span><span class="p">(</span><span class="n">sum2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">den</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="n">r</span> <span class="o">=</span> <span class="n">num</span><span class="o">/</span><span class="n">den</span>
+
+    <span class="k">return</span> <span class="n">r</span>
+
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[(</span><span class="n">pearson_coeff</span><span class="p">(</span><span class="n">critics</span><span class="p">,</span> <span class="n">critic</span><span class="p">,</span> <span class="s">&#39;Rohit Deshpande&#39;</span><span class="p">),</span> <span class="n">critic</span><span class="p">)</span> <span class="k">for</span> <span class="n">critic</span> <span class="ow">in</span> <span class="n">critics</span><span class="p">]</span>
+</code></pre></div>
+<p>I run the Pearson Coefficient function on all of the critics in the dict. I get the following result: </p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[(</span><span class="mf">0.063705898929703228</span><span class="p">,</span> <span class="s">&#39;Jack Matthews&#39;</span><span class="p">),</span>
+ <span class="p">(</span><span class="mf">0.068199433947047347</span><span class="p">,</span> <span class="s">&#39;Michael Phillips&#39;</span><span class="p">),</span>
+ <span class="p">(</span><span class="mf">0.10463701596227334</span><span class="p">,</span> <span class="s">&#39;Lisa Rose&#39;</span><span class="p">),</span>
+ <span class="p">(</span><span class="mf">0.22793338537080252</span><span class="p">,</span> <span class="s">&#39;Mick LaSalle&#39;</span><span class="p">),</span>
+ <span class="p">(</span><span class="mf">0.26937581907458558</span><span class="p">,</span> <span class="s">&#39;Gene Seymour&#39;</span><span class="p">),</span>
+ <span class="p">(</span><span class="mf">0.5490856186527705</span><span class="p">,</span> <span class="s">&#39;Toby&#39;</span><span class="p">),</span>
+ <span class="p">(</span><span class="mf">0.83874213682932564</span><span class="p">,</span> <span class="s">&#39;Claudia Puig&#39;</span><span class="p">),</span>
+ <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="s">&#39;Rohit Deshpande&#39;</span><span class="p">)]</span>
+</code></pre></div>
+<p>Clearly, the correlation is the best with myself. However, I find the best correlation with Claudia Puig and worst with Jack and Michael. This suggests that I will most likely enjoy the movies that are highly rated by Claudia but not by Jack and Michael. </p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2014/08/15/numpy-notes-part1/">
+            Numpy Notes&#58; Part 1
+            <small>15 Aug 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/01/28/Installation-Guide-to-iPython-Notebook/">
+            Installation Guide to iPython Notebook
+            <small>28 Jan 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2014/01/06/unique-list-value/">
+            Find Unique Values in a list
+            <small>06 Jan 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
