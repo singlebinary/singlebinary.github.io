@@ -29,3 +29,35 @@ Query OK, 0 rows affected (0.05 sec)
 
 To view the description of the table we just created, do the following: 
 ![My helpful screenshot](/assets/mysql_db_command.jpg)
+
+Now we begin to insert each row. To do this enter each line as a command in mysql: 
+
+~~~python
+insert into books values(1,'Pride and Prejudice', 'Austen', 15);
+insert into books values(2, 'Animal Farm', 'Orwell', 7);
+insert into books values(3, 'Merchant of Venice', 'Shakespeare', 5);
+insert into books values(4, 'Romeo and Juliet', 'Shakespeare', 8);
+insert into books values(5, 'Oliver Twist', 'Dickens', 3);
+insert into books values(6, 'Candide', 'Voltaire', 9);
+insert into books values(7, 'The Scarlet Letter', 'Hawthorne', 12);
+insert into books values(8, 'Hamlet', 'Shakespeare', 2);
+~~~
+
+There we have it, we now have a database table with rows and columns. We can view the table using the basic SQL command: 
+
+~~~python
+mysql> select * from newbooks;
++----+---------------------+-------------+-------------------+
+| id | Title               | Author      | CurrentMonthSales |
++----+---------------------+-------------+-------------------+
+|  1 | Pride and Prejudice | Austen      |                15 |
+|  2 | Animal Farm         | Orwell      |                 7 |
+|  3 | Merchant of Venice  | Shakespeare |                 5 |
+|  4 | Romeo and Juliet    | Shakespeare |                 8 |
+|  5 | Oliver Twist        | Dickens     |                 3 |
+|  6 | Candide             | Voltaire    |                 9 |
+|  7 | The Scarlet Letter  | Hawthorne   |                12 |
+|  8 | Hamlet              | Shakespeare |                 2 |
++----+---------------------+-------------+-------------------+
+8 rows in set (0.00 sec)
+~~~
