@@ -6,6 +6,7 @@ tags: sql
 I just learnt to create a database in mySQL and I thought of sharing it out here. This post assumes that you have installed mySQL on your computer. 
 
 First you need to connec to mySQL as root. So, in the terminal do the following: 
+
 ~~~python
 
 mysql -u root 
@@ -13,6 +14,7 @@ mysql -u root
 ~~~
 
 this should start the mySQL program. Now we create a new database: 
+
 ~~~python
 
 mysql> create database newbooks;
