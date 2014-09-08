@@ -56,14 +56,14 @@ mysql> desc newbooks;
 Now we begin to insert rows in our empty DB. We do this by inserting each row at a time: 
 
 ~~~python
-insert into books values(1,'Pride and Prejudice', 'Austen', 15);
-insert into books values(2, 'Animal Farm', 'Orwell', 7);
-insert into books values(3, 'Merchant of Venice', 'Shakespeare', 5);
-insert into books values(4, 'Romeo and Juliet', 'Shakespeare', 8);
-insert into books values(5, 'Oliver Twist', 'Dickens', 3);
-insert into books values(6, 'Candide', 'Voltaire', 9);
-insert into books values(7, 'The Scarlet Letter', 'Hawthorne', 12);
-insert into books values(8, 'Hamlet', 'Shakespeare', 2);
+insert into newbooks values(1,'Pride and Prejudice', 'Austen', 15);
+insert into newbooks values(2, 'Animal Farm', 'Orwell', 7);
+insert into newbooks values(3, 'Merchant of Venice', 'Shakespeare', 5);
+insert into newbooks values(4, 'Romeo and Juliet', 'Shakespeare', 8);
+insert into newbooks values(5, 'Oliver Twist', 'Dickens', 3);
+insert into newbooks values(6, 'Candide', 'Voltaire', 9);
+insert into newbooks values(7, 'The Scarlet Letter', 'Hawthorne', 12);
+insert into newbooks values(8, 'Hamlet', 'Shakespeare', 2);
 ~~~
 
 There we have it, we now have a database table with rows and columns. We can view the table using the basic SQL command: 
