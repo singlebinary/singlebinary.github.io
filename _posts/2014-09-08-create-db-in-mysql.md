@@ -3,9 +3,9 @@ layout: post
 title: Create a Database in mySQL 
 tags: sql 
 ---
-I just learnt to create a database in mySQL and I thought of sharing it out here. This post assumes that you have installed mySQL on your computer. 
+Creating databases in the opensource SQL database (DB) program is quite straightforward. We just need to create an empty table, name the columns, and insert rows. This post shows you step-by-step how to create a table. In this post we will create a table of books inventory. 
 
-First you need to connec to mySQL as root. So, in the terminal do the following: 
+The very first step is to "login" into our mySQL DB as a root. The default the root password for mySQL on your machine is blank. That is there is no password. So, to login do the following: 
 
 ~~~python
 
@@ -13,7 +13,15 @@ mysql -u root
 
 ~~~
 
-this should start the mySQL program. Now we create a new database: 
+However, if you have a root password, you would need to type the following: 
+
+~~~python
+
+mysql -u root -p 
+
+~~~
+
+Once you enter the password, or have none, you should get a mysql prommpt. Now we create a new database. The command to create a blank DB is the following:  
 
 ~~~python
 
@@ -22,7 +30,7 @@ Query OK, 1 row affected (0.00 sec)
 
 ~~~
 
-This command creates an empty database. The next step is to name the columns of the database: 
+This command creates an empty database. Once this is created, we name each column in our database. 
 
 ~~~python
 mysql> create table newbooks (
@@ -33,10 +41,19 @@ mysql> create table newbooks (
 Query OK, 0 rows affected (0.05 sec)
 ~~~
 
+In this example, I have created 3 columns: Title, Author, CurrentMonthSales. If you have more columns, you could keep typing each column name on separate row in your terminal. Note that each column needs to be specified by its datatype. In this example, the first two columns are string literals while the third column is an integer. 
+
 To view the description of the table we just created, do the following: 
+
+~~~python
+
+mysql> desc newbooks;
+
+~~~
+
 ![My helpful screenshot](/assets/mysql_db_command.jpg)
 
-Now we begin to insert each row. To do this enter each line as a command in mysql: 
+Now we begin to insert rows in our empty DB. We do this by inserting each row at a time: 
 
 ~~~python
 insert into books values(1,'Pride and Prejudice', 'Austen', 15);
