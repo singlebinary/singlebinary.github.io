@@ -19,24 +19,13 @@ Query OK, 1 row affected (0.00 sec)
 This command creates an empty database. The next step is to name the columns of the database: 
 
 ~~~python
-create table books (
-id INT AUTO_INCREMENT PRIMARY KEY,
-Title varchar(20), 
-Author varchar(20),
-CurrentMonthSales int(10));
+mysql> create table newbooks (
+    -> id INT AUTO_INCREMENT PRIMARY KEY,
+    -> Title varchar(20),
+    -> Author varchar(20),
+    -> CurrentMonthSales int(10));
+Query OK, 0 rows affected (0.05 sec)
 ~~~
 
 To view the description of the table we just created, do the following: 
-
-~~~python 
-mysql> desc newbooks;
-+-------------------+-------------+------+-----+---------+----------------+
-| Field             | Type        | Null | Key | Default | Extra          |
-+-------------------+-------------+------+-----+---------+----------------+
-| id                | int(11)     | NO   | PRI | NULL    | auto_increment |
-| Title             | varchar(20) | YES  |     | NULL    |                |
-| Author            | varchar(20) | YES  |     | NULL    |                |
-| CurrentMonthSales | int(10)     | YES  |     | NULL    |                |
-+-------------------+-------------+------+-----+---------+----------------+
-4 rows in set (0.00 sec)
-~~~
+![My helpful screenshot](/assets/mysql_db_command.jpg)
