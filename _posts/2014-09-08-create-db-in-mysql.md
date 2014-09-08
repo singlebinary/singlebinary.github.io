@@ -7,13 +7,17 @@ I just learnt to create a database in mySQL and I thought of sharing it out here
 
 First you need to connec to mySQL as root. So, in the terminal do the following: 
 ~~~python
+
 mysql -u root 
+
 ~~~
 
 this should start the mySQL program. Now we create a new database: 
 ~~~python
+
 mysql> create database newbooks;
 Query OK, 1 row affected (0.00 sec) 
+
 ~~~
 
 This command creates an empty database. The next step is to name the columns of the database: 
