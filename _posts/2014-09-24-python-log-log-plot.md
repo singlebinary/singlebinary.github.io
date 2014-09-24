@@ -79,22 +79,29 @@ ax.set_xlabel('M/M$_{\odot}$')
 ax.set_ylabel('R/R$_{\odot}$')
 
 # Plot the isochrones 
-line3, = ax.plot(dm1gy[0], dm1gy[1], ':', lw = 2, label = '1 Gyr', color = 'magenta')
-line4, = ax.plot(dm3gy[0], dm3gy[1], color = 'teal', linestyle = '-', lw = 2, label = '3 Gyr')
-line5, = ax.plot(dm6gy[0], dm6gy[1], color = '#45ff77', linestyle = '--', lw = 2, label = '6 Gyr')
-line6, = ax.plot(dm8gy[0], dm8gy[1], color = 'orange', linestyle = '-.', lw = 2, label = '8 Gyr')
+line3, = ax.plot(dm1gy[0], dm1gy[1], ':', lw = 2, label = '1 Gyr', 
+                 color = 'magenta')
+line4, = ax.plot(dm3gy[0], dm3gy[1], color = 'teal', 
+                linestyle = '-',lw = 2, label = '3 Gyr')
+line5, = ax.plot(dm6gy[0], dm6gy[1], color = '#45ff77', 
+                linestyle = '--',lw = 2, label = '6 Gyr')
+line6, = ax.plot(dm8gy[0], dm8gy[1], color = 'orange', 
+                linestyle = '-.',lw = 2, label = '8 Gyr')
 
 # Plot the DEBCat Stars 
 line1, = ax.plot(m1, r1, 'o', color = 'gray',  zorder=1, mfc = 'none',
 	    markersize = 5, label = 'DEBCat Eclipsing Binary')
-line2, = ax.plot(m2, r2, 'o', markersize = 5, color = 'gray',  zorder=1, mfc = 'none')
+line2, = ax.plot(m2, r2, 'o', markersize = 5, color = 'gray',  
+                 zorder=1, mfc = 'none')
 # Plot APOGEE ebs: 
 line7, = ax.plot(apg_eb_mass, apg_eb_radii, 'o', color = 'red'
 	             , label = 'APOGEE-I Kepler Eclipsing Binaries')
 # Set the legends
-first_legend = ax.legend(numpoints=1, loc=1, frameon=True, handles=[line1, line7])
+first_legend = ax.legend(numpoints=1, loc=1, frameon=True, 
+                         handles=[line1, line7])
 ax = plt.gca().add_artist(first_legend)
-plt.legend(numpoints=1, loc=3, frameon=False, handles=[line3, line4, line5, line6])
+plt.legend(numpoints=1, loc=3, frameon=False, 
+           handles=[line3, line4, line5, line6])
 plt.text(1.75, 1.2, 'Dartmouth 2012 [Fe/H]=0.0')
 #plt.show()
 plt.savefig('isochrones.eps', dpi = 200)
