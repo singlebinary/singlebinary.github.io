@@ -5,6 +5,9 @@ tags: python
 ---
 We often create log-log plots in python. By default matplotlib labels the axes in powers of 10. However, because I had zoomed into such a plot. My axes did not go beyond 10. In such a case, the default plotting routine skips labeling small ticks. Searching through stackoverflow, I finally figured out how to get the labels show up correctly. The code and the result below shows how this works: 
 
+The end result is the following: 
+![My helpful screenshot](/assets/log_log_plot.png)
+
 ~~~python
 
 # This program plots the Darthmouth isocrones for the Kepler 
@@ -99,5 +102,4 @@ plt.savefig('isochrones.eps', dpi = 200)
 
 ~~~
 
-The magic happens with the Formatter. This code allows a user to make use of any formatting of the axes. The end result is the following: 
-![My helpful screenshot](/assets/log_log_plot.jpeg)
+The magic happens with the Formatter. This code allows a user to make use of any formatting of the axes. 
