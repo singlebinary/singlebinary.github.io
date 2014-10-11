@@ -1,27 +1,64 @@
-# Dependencies
-markdown:         redcarpet
-highlighter:      pygments
+title:            Rohit's Travel Blog
+tagline:          A beautiful theme.
+description:      Describe your website.
+canonical: http://jekyll.gtat.me
+animated: true
+# Owner/author information
+owner:
+  name:           Rohit Deshpande
+  avatar:         avatar.png
+  bio:            "Aesthete & Athlete"
+  email:          singlebinary@gmail.com
+  twitter:        singlebinary
+  github:         rohitx
+  instagram:      singlebinary
+  dribbble:       coletownsend
+  disqus:         balzac
+  location:       "Buffalo, NY"
+  # Plug in your disqus shortname!
 
-# Permalinks
-permalink:        pretty
+tools:
+  standards:      "HTML, SCSS, Jekyll"
+  software:       "git"
 
-# Setup
-title:            Rohit at 1 A.U.
-tagline:          ''
-description:      "My experiences with Python, D3, and Data Analysis"
-url:              http://rohitx.github.io/index.html
-baseurl:          /
+# Links to include in top navigation
+# For external links add external: true
+links:
+  - title: Blog
+    url: /blog 
+  - title: About
+    url: /about
+  - title: Archive
+    url: /archive    
+  - title: Github
+    url: https://github.com/rohitx
+    external: true
 
-author:
-  name:           'Rohit Deshpande'
-  url:            https://twitter.com/singlebinary
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:    America/New_York
+future:      true
+highlighter: pygments
+markdown:    kramdown
 
-paginate:         10
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  use_coderay: false
 
-# Custom vars
-version:          2.1.0
+  coderay:
+    coderay_line_numbers:
+    coderay_line_numbers_start: 1
+    coderay_tab_width: 4
+    coderay_bold_every: 10
+    coderay_css: class
 
-github:
-  repo:           https://github.com/rohitx
+sass:
+    style: :compressed
 
-pages_list:       ['About', 'Archive']
+# https://github.com/mojombo/jekyll/wiki/Permalinks
+permalink:   /:categories/:title
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp"]
